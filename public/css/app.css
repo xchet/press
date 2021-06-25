@@ -1,0 +1,15 @@
+@import url('../content/fonts.min.css');
+@import url('../content/css/jquery.mb.YTPlayer.min.css');
+@import url('../content/css/style.css');
+
+.top-login{
+    position:absolute;
+    top:0;
+    right:0;
+    font-size: 12px;
+    margin: 2px 50px 0 0;
+    display: flex;
+}
+.top-login div, a{
+    margin-right: 20px;
+}
