@@ -83,15 +83,25 @@
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td>{{ $user->real_name ? $user->real_name : $user->name }}</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>2011/04/25</td>
+                                @if(isAdminById($user->id))
+                                    <td>
+                                        <span class="label label-sm label-info"> {{  $user->real_name ? $user->real_name : $user->name  }}</span>
+                                    </td>
+                                @else
+                                    <td>{{ $user->real_name ? $user->real_name : $user->name }}</td>
+                                @endif
+                                <td>{{ $user->created_at }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>
-                                    <span class="label label-sm label-success"> Approved </span>
+                                    @if($user->register_from == 'github')
+                                        <i class="fa fa-github-alt fw" data-toggle="tooltip" title="GitHub"></i>
+                                    @elseif($user->register_from == 'web_form')
+                                        <i class="fa fa-globe fw" data-toggle="tooltip" title="Website"></i>
+                                    @endif
+                                    {{-- <span class="label label-sm label-success"> Approved </span>
                                     <span class="label label-sm label-warning"> Suspended </span>
                                     <span class="label label-sm label-danger"> Blocked </span>
-                                    <span class="label label-sm label-info"> Info </span>
+                                    <span class="label label-sm label-info"> Info </span> --}}
                                 </td>
                                 <td class="valigntop">
                                     <div class="btn-group">
