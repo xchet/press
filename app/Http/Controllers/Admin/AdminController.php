@@ -10,11 +10,6 @@ use Carbon\Carbon;
 
 class AdminController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('admin');
-    // }
-
     public function index()
     {
         $record = User::select(\DB::raw("COUNT(*) as count"), \DB::raw("DAYNAME(created_at) as day_name"), \DB::raw("DAY(created_at) as day"))
@@ -32,11 +27,5 @@ class AdminController extends Controller
 
         $data['chart_data'] = json_encode($data);
         return view('admin.index', $data);
-    }
-
-    public function index1()
-    {
-        $dashboard = view('admin.index');
-        return $dashboard;
     }
 }

@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'avatar' => env('AVATAR'),
+    
     'name' => env('APP_NAME', ''),
 
     'owner' => env('APP_Owner', 'Xchet'),
@@ -177,6 +179,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Silber\PageCache\LaravelServiceProvider::class,
 
     ],
 
@@ -231,6 +234,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        // 'PreeConfig' => App\Facades\PressConfig::class,
 
     ],
 

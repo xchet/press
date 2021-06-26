@@ -15,6 +15,11 @@
                     'icon' => 'person_outline',
                     'route' => 'adminUsers'
                 ],
+                [
+                    'name' => 'Categories',
+                    'icon' => 'folder_open',
+                    'route' => 'admin.categories'
+                ],
             ]
         ]
         //         [
@@ -36,11 +41,6 @@
         //             'name' => 'Tags',
         //             'icon' => 'tags',
         //             'route' => 'admin.tags'
-        //         ],
-        //         [
-        //             'name' => 'Categories',
-        //             'icon' => 'folder',
-        //             'route' => 'admin.categories'
         //         ],
         //         [
         //             'name' => 'IP',
