@@ -14,4 +14,9 @@ Route::get('/categories', 'CategoryController@index')->name('admin.categories');
 Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
 Route::resource('category', 'CategoryController', ['except' => ['index', 'show', 'create']]);
 Route::resource('tag', 'TagController', ['except' => ['index', 'show', 'create']]);
-Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
+// Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
+
+/**
+ * Post Routes
+ */
+Route::get('/post/v1/slug', 'PostController@slug')->name('postSlug');
