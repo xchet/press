@@ -14,5 +14,11 @@
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+    },
+    "dependencies": {
+        "@uppy/core": "^1.19.1",
+        "@uppy/dashboard": "^1.20.1",
+        "@uppy/xhr-upload": "^1.7.4",
+        "uppy": "^1.29.1"
     }
 }

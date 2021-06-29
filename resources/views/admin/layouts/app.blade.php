@@ -4,25 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>{{ config('app.name') }}</title>
+        <title>@yield('title') - {{ config('app.name') }}</title>
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets') }}/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets') }}/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-
-        <link href="{{ asset('assets') }}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        
-        <link rel="stylesheet" href="{{ asset('assets') }}/plugins/material/material.min.css">
-        <link rel="stylesheet" href="{{ asset('assets') }}/css/material_style.css">
-        
-        <link href="{{ asset('assets') }}/css/pages/animate_page.css" rel="stylesheet">
-        
-        <link href="{{ asset('assets') }}/css/style.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets') }}/css/plugins.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets') }}/css/responsive.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets') }}/css/theme-color.css" rel="stylesheet" type="text/css" />
-        
         <link rel="shortcut icon" href="{{ asset('assets') }}/img/favicon.ico" /> 
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
         @yield('css')
     </head>

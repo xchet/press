@@ -31,11 +31,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         <link href="https://fonts.googleapis.com/css?family=B612+Mono%7CCabin:400,700&display=swap" rel="stylesheet">
-        {{-- <link rel="stylesheet" href="{{ asset('content') }}/fonts.min.css" /> --}}
-        {{-- <link href="{{ asset('content') }}/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css"> --}}
-        {{-- <link rel="stylesheet" href="{{ asset('content') }}/css/style.css"> --}}
-        
-        <link rel="stylesheet" href="css/app.css">
+        {{-- <link rel="stylesheet" href="{{ asset('content') }}/fonts.min.css" />
+        <link href="{{ asset('content') }}/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{{ asset('content') }}/css/style.css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+        <link rel="stylesheet" href="css/style.css">
 
         @yield('css')
 
@@ -74,6 +74,10 @@
                                     <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
                             @else
+                                @if (isAdmin(Auth::user()))
+                                    <a class="" href="{{ url('admin') }}">{{ __('Admin Dashboard') }}</a>
+                                @endif
+
                                 <a id="" class="" href="#" role="button" data-toggle="" aria-haspopup="" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>

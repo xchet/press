@@ -23,9 +23,12 @@
                 <div class="row p-b-20">
                     <div class="col-md-6 col-sm-6 col-6">
                         <div class="btn-group">
-                            <button id="sample_editable_1_new" class="btn btn-info"> Add New
+                            {{-- <button id="sample_editable_1_new" class="btn btn-info"> Add New
                                 <i class="fa fa-plus"></i>
-                            </button>
+                            </button> --}}
+                            <a id="sample_editable_1_new" class="btn btn-info" href="{{ route('category.create') }}"> Add New
+                                <i class="fa fa-plus"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-6">
@@ -75,17 +78,26 @@
                         @foreach ($categories as $category)
                             <tr>
                                 <td>{{ $category->name }}</td>
-                                <td>{{ str_limit($category->description, 64) }}</td>
+                                <td>{{ \Str::limit($category->description, 64) }}</td>
                                 <td>{{ $category->posts_count }}</td>
 
                                 <td >
-                                    <button class="btn btn-success btn-xs">
+                                    <button class="btn btn-success btn-xs" title="Activate Category">
                                         <i class="fa fa-check"></i>
                                     </button>
-                                    <button class="btn btn-primary btn-xs">
-                                        <i class="fa fa-pencil"></i>
+                                    <button class="btn btn-default btn-xs" title="Dectivate Category">
+                                        <i class="fa fa-times-circle"></i>
                                     </button>
-                                    <button class="btn btn-danger btn-xs">
+                                    <a class="btn btn-primary btn-xs" title="Edit Category"
+                                            href="{{ route('category.edit',$category->id) }}"
+                                            data-toggle="tooltip" data-placement="top"
+                                            > 
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <button class="btn btn-danger btn-xs" title="Delete Category"
+                                            data-toggle="tooltip" data-placement="top" title="{{__('web.REMOVE')}}"
+                                            data-url="{{ route('category.destroy',$category->id) }}"
+                                            data-dialog-msg="{{__('web.REMOVE')}}{{ $category->name }}?">
                                         <i class="fa fa-trash-o "></i>
                                     </button>
                                 </td>

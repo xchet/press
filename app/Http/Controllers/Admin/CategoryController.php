@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\CategoryRepository;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,12 +17,11 @@ class CategoryController extends Controller
     {
         $this->categoryRepository = $categoryRepository;
     }
-    
+
     public function index()
     {
-        // $categories = [];
         $categories = $this->categoryRepository->getAll();
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -30,7 +31,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::where('status',1)->where('id',1)->get();
+        return view('admin.category.create', compact('categories'));
     }
 
     /**
@@ -41,7 +43,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|unique:categories',
+            'description' => 'max:1024',
+            'cover_img' => 'max:255',
+        ]);
+        if ($this->categoryRepository->create($request))
+            return back()->with('success', __('web.CATEGORY') . $request['name'] . __('web.CREATE_SUCCESS'));
+        else
+            return back()->with('error', __('web.CATEGORY') . $request['name'] . __('web.CREATE_FAIL'));
     }
 
     /**
@@ -61,9 +71,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        dd($category);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -84,8 +95,20 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category /**$id*/)
     {
-        //
+        if ($category->posts()->withoutGlobalScopes()->count() > 0) {
+            return redirect()->route('admin.categories')->withErrors($category->name . __('web.HAVE_POST_CANT_REMOVE'));
+        }
+        $this->categoryRepository->clearCache();
+        if ($category->delete())
+            return back()->with('success', $category->name . __('web.REMOVE_SUCCESS'));
+        return back()->withErrors($category->name . __('web.REMOVE_FAIL'));
+    }
+
+    public function slug(Request $request)
+    {
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
     }
 }

@@ -180,6 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Silber\PageCache\LaravelServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
 
     ],
 
@@ -234,7 +235,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        // 'PreeConfig' => App\Facades\PressConfig::class,
+        // 'PressConfig' => App\Facades\PressConfig::class,
 
     ],
 

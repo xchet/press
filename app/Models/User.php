@@ -58,4 +58,20 @@ class User extends Authenticatable
     {
         $this->attributes['meta'] = json_encode($meta);
     }
+
+    public function isSuperAdmin() {
+        return $this->role === 'superadmin';
+    }
+
+    public function isAdmin() {
+        return $this->role === 'admin';
+    }
+
+    public function isManager() {
+        return $this->role === 'manager';
+    }
+
+    public function isUser() {
+        return $this->role === 'user';
+    }
 }

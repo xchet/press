@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIPSTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateIPSTable extends Migration
      */
     public function up()
     {
-        Schema::create('ips', function (Blueprint $table) {
-            // $table->id();
-            $table->string('id', 128)->primary();
-            $table->integer('user_id')->nullable()->index();
-            $table->boolean('blocked')->default(false);
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateIPSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('i_p_s');
+        Schema::dropIfExists('images');
     }
 }

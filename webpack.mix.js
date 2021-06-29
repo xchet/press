@@ -15,3 +15,11 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
+// mix.js('resources/js/app.js', 'public/js/app.js')
+//     .js('resources/js/admin.js', 'public/js/admin.js')
+//     // .js('resources/js/home.js', 'public/js/home.js')
+//     // .sass('resources/css/home.scss', 'public/css/home.css')
+//     .css('resources/css/app.css', 'public/css/app.css')
+//     .css('resources/css/admin.css', 'public/css/admin.css')
+//     .version();

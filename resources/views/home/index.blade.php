@@ -6,5 +6,5 @@
 {{-- @include('home.partials.cat') --}}
 {{-- @include('home.partials.recent') --}}
 {{-- @include('home.partials.subscribe') --}}
-{{-- @include('home.partials.footer') --}}
+@include('home.partials.footer')
 @endsection
